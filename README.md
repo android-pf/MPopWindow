@@ -2,8 +2,8 @@
 
 一款简单使用的自定义菜单，具体如图：
 
-<!-- ![IOS分分种搞定的效果](http://okbrselg1.bkt.clouddn.com/iamge/ios_menu.png =200x) -->
-![Android自定义的效果](http://okbrselg1.bkt.clouddn.com/image/android_menu.png )
+ 
+<!-- ![Android自定义的效果](http://okbrselg1.bkt.clouddn.com/image/android_menu.png ) -->
 
 ### 使用步骤：
 ## Step 1. 在Project build.gradle 文件中添加以下代码
@@ -21,42 +21,23 @@ allprojects {
  
 ``` java
     dependencies {
-	       compile 'com.github.android-pf:MBtnMenu:v2.0'
+	         compile 'com.github.android-pf:MPopWindow:v1.1'
 	}
 ```
 
-## Step 3. 在具体使用的xml中,
-其中顶层布局中需要写 ： xmlns:menu="http://schemas.android.com/apk/res-auto"
-defChecked 表示默认选中 numbers 表示几个按钮 目前 支持2-4个按钮 另外还有字体颜色，字体大小等属性
+## Step 3. 在代码中使用
+new PopWindow 时传递需要的item名称  onPopClick为具事件处理
 ``` java
-  //切记顶层布局中需要该代码
-  <LinearLayout
-      xmlns:menu="http://schemas.android.com/apk/res-auto"
-      ...>
-  
-   <futurenavi.libbtnmenu.BtnMenuLayout
-        android:id="@+id/btnMenu"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        menu:defChecked="2"
-        menu:numbers="4"
-        menu:textSize="12sp"/>
-```
-
-## Step 4. 在代码中使用
- 
-``` java
-        btnMenu = (BtnMenuLayout) findViewById(R.id.btnMenu);
- 
-      
-        btnMenu.addBtnNames("全部", "未开始", "进行中", "已结束").menuClicks(new  BtnMenuLayout.CallBack(){
-            @Override
-            public void onClicks(Button btns) {
-                //具体的处理方案
-            }
-        });
-        //需要具体个数时，可再次调用addBtnNames方法
-         btnMenu.addBtnNames("全部(21)", "未开始(10)", "进行中(10)", "已结束(1)").menuClicks(call);
+               pw = new PopWindow(this, "老师", "学生");//具体item name
+               pw.callBack(new PopWindow.CallBack() {
+                   @Override
+                   public void onPopClick(String flag) {
+                       Log.i("WZK", "被点击的是" + flag);
+                   }
+               });
+               
+               
+                 pw.show(MainAct.this);//show 方法
 ```
 
 
