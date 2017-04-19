@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- 资源 底部 popupwindow -->
+    <style name="Animations_BottomPush">
+        <item name="android:windowEnterAnimation">@anim/pw_push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/pw_push_bottom_out</item>
+    </style>
+
+</resources>
